@@ -1,0 +1,37 @@
+import random
+#Verschlüsseln
+text = open("meinText.txt", "r")
+encoden = open("encoden.txt", "w")
+schluessel = open("schluessel.txt", "w")
+textStr = text.read()
+for i in range(len(textStr)):
+    ordi = ord(textStr[i])
+    schreibZeichen = chr(ordi)
+    zahl1 = random.randint(32, ordi)
+    zahl2 = ordi - zahl1
+    str(schreibZeichen)
+    str(zahl2)
+    encoden.write(str(zahl1))
+    encoden.write(" ")
+    schluessel.write(str(zahl2))
+    schluessel.write(" ")
+encoden.close()
+schluessel.close()
+#Entschlüsseln
+entschluesseln = open("entschluesselt.txt", "w")
+encoden = open("encoden.txt", "r")
+schluessel = open("schluessel.txt", "r")
+text1 = encoden.read()
+text2 = schluessel.read()
+texts1 = text1.split()
+texts2 = text2.split()
+for i in range(len(texts1)):
+    zahl3 = int(texts1[i]) + int(texts2[i])
+    zeichen = chr(int(zahl3))
+    print(zahl3)
+    print(zeichen)
+    entschluesseln.write(zeichen)
+text.close()
+entschluesseln.close()
+encoden.close()
+schluessel.close()    
